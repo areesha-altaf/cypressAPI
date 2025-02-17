@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tests": "cypress run --browser chrome", 
+    "report": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/report.json",
+    "merge": "npx marge cypress/reports/report.json -o cypress/reports/html",
+    "execute": "npm run clean && npm run tests && npm run report && npm run execute",
+    "clean": "rimraf cypress/reports/*"
   },
   "keywords": [],
   "author": "",
