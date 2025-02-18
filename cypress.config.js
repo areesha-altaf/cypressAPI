@@ -3,15 +3,20 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      on("task", {
+        logMessage(message) {
+          console.log(message);
+          return null;
+        }
+      });
     },
-    baseUrl: "",
+    baseUrl: "https://www.bankofcanada.ca/",
     specPattern: "cypress/e2e/APITests/*.cy.js",
     video: false, 
     reporter: "mochawesome",
     reporterOptions: {
       reportDir: "cypress/reports",
-      overwrite: false,
+      overwrite: true,
       html: true,
       json: true
     }
