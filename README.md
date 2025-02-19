@@ -1,6 +1,7 @@
 **How to run the tests?**
 - Download the repository or "git clone git@github.com:areesha-altaf/cypressAPI.git"
-- Open the project in an IDE and launch terminal, then type "npm run execute"
+- Open the project in an IDE and install Cypress
+- Execute "npm run execute" to run the tests
 - The above command is a combination of several scripts that clean the old report, execute the tests headlessly, and generate a new report
 - The test results and API responses can be viewed on the console
 --------------------------
