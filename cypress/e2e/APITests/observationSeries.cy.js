@@ -18,9 +18,39 @@ describe("Observation by Series API Tests", function () {
       const observations = response.body.observations;
       let sum = 0;
       let count = 0;
+      let key = this.conversions.CADtoUSD;
 
       for (let i = 0; i < observations.length; i++) {
-        const vValue = parseFloat(observations[i].FXCADUSD.v);
+        const vValue = parseFloat(observations[i][key].v);
+        sum += vValue; 
+        count++; 
+      }
+
+      const average = sum / count;
+      cy.task('logMessage', `\n Average of 10 weeks' conversion rate: ${average.toFixed(4)}`); //4 decimal places
+
+      expect(response.status).to.eq(200);
+
+    });
+  });
+
+  it("Positive flow: AUD to CAD (200)", function () {
+   
+    cy.apiGet(
+      ENDPOINTS.OBSERVATIONS + this.conversions.AUDtoCAD + ENDPOINTS.FORMAT, // same as previous, but with different currency 
+      obsQueryParams,
+      obsHeaders
+    ).then((response) => {
+      
+      cy.task('logMessage', `API Response Body: ${JSON.stringify(response.body, null, 2)}`);
+
+      const observations = response.body.observations;
+      let sum = 0;
+      let count = 0;
+      let key = this.conversions.AUDtoCAD;
+
+      for (let i = 0; i < observations.length; i++) {
+        const vValue = parseFloat(observations[i][key].v);
         sum += vValue; 
         count++; 
       }
