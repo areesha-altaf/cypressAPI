@@ -1,9 +1,10 @@
-Cypress.Commands.add("apiGet", (url, queryParams = {}, headers = {}) => {
+Cypress.Commands.add("apiGet", (url, queryParams = {}, headers = {}, failOnStatusCode = true) => {
   return cy.request({
     method: "GET",
     url,
     qs: queryParams,
     headers: headers,
+    failOnStatusCode: failOnStatusCode,
   });
 });
 
