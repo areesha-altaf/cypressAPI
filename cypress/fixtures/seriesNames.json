@@ -1,3 +1,4 @@
 {
-  "CADtoUSD": "FXCADUSD"
+  "CADtoUSD": "FXCADUSD",
+  "incorrectSeries": "FXCADUSD123"
 }

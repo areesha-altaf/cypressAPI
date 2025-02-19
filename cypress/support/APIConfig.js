@@ -6,3 +6,8 @@ export const obsQueryParams = {
 export const obsHeaders = {
   accept: "application/json",
 };
+
+export const incorrectParams = {
+  ...obsQueryParams,
+  end_date: "2025-01-01"
+}
